@@ -22,37 +22,37 @@
 </nav>
 
 <div class="container">
-    <form method="post" th:action="@{/}" th:object="${item}">
-        <div class="input-group mb-3 mt-3">
-            <input type="text" th:field="*{name}" class="form-control" placeholder="Add department"
-                   aria-label="Add department" aria-describedby="basic-addon2">
+    <form method="post" th:action="@{/students/{id}(id = ${department.id})}" th:object="${student}">
+        <div class="input-group">
+            <span class="input-group-text">First and last name</span>
+            <input type="text" th:field="*{name}" aria-label="First name" placeholder="Name" class="form-control">
+            <input type="text" th:field="*{surname}" aria-label="Last name" placeholder="Surname" class="form-control">
             <div class="input-group-append">
                 <button class="btn btn-primary" type="submit">Add</button>
             </div>
         </div>
     </form>
 
+    <h1 th:text="'Students of ' + ${department.getName()} + ' department'"></h1>
+
     <table class="table table-striped">
         <thead>
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
+            <th scope="col">Surname</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="item : ${items}">
             <th scope="row" th:text="${item.id}">1</th>
-            <td th:text="${item.name}">Computer Science</td>
+            <td th:text="${item.name}">Ivan</td>
+            <td th:text="${item.surname}">Ivanov</td>
             <td>
-                <form th:action="@{/{id}(id = ${item.id})}" th:method="delete">
+                <form th:action="@{delete/{id}(id = ${item.id})}" th:method="delete">
                     <button type="submit" class="btn btn-outline-danger">Delete</button>
                 </form>
-            </td>
-            <td>
-                <a th:href="@{/{id}(id = ${item.id})}">
-                    <button type="button" class="btn btn-primary">View</button>
-                </a>
             </td>
         </tr>
         </tbody>

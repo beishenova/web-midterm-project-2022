@@ -22,7 +22,7 @@
 </nav>
 
 <div class="container">
-    <form method="post" th:action="@{/}" th:object="${item}">
+    <form method="post" th:action="@{/departments/}" th:object="${item}">
         <div class="input-group mb-3 mt-3">
             <input type="text" th:field="*{name}" class="form-control" placeholder="Add department"
                    aria-label="Add department" aria-describedby="basic-addon2">
@@ -45,7 +45,7 @@
             <th scope="row" th:text="${item.id}">1</th>
             <td th:text="${item.name}">Computer Science</td>
             <td>
-                <form th:action="@{/{id}(id = ${item.id})}" th:method="delete">
+                <form th:action="@{/departments/{id}(id = ${item.id})}" th:method="delete">
                     <button type="submit" class="btn btn-outline-danger">Delete</button>
                 </form>
             </td>

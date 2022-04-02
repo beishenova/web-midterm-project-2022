@@ -25,13 +25,13 @@ public class MainController {
     @DeleteMapping("/{id}")
     public String deleteDepartment(@PathVariable("id") Long id) {
         service.deleteDepartment(id);
-        return "redirect:/";
+        return "redirect:/departments";
     }
 
     @PostMapping
     public String addDepartment(Department department) {
         service.saveDepartment(department);
-        return "redirect:/";
+        return "redirect:/departments";
     }
 
 }

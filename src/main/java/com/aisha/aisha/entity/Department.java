@@ -21,13 +21,13 @@ public class Department {
 
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "department")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "department_id")
     private List<Student> students = new ArrayList<>();
 
 
-    public void addStudentToDepartment(Student student){
+    public void addStudentToDepartment(Student student) {
         students.add(student);
-        student.setDepartment(this);
     }
 
 }
