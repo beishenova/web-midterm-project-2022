@@ -21,5 +21,8 @@ public class Student {
 
     private String surname;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "department_id")
+    private Department department;
 
 }

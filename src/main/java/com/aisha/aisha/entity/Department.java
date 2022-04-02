@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "departments")
@@ -18,5 +20,14 @@ public class Department {
     private Long id;
 
     private String name;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "department")
+    private List<Student> students = new ArrayList<>();
+
+
+    public void addStudentToDepartment(Student student){
+        students.add(student);
+        student.setDepartment(this);
+    }
 
 }
